@@ -13,23 +13,32 @@ export function SignInForm() {
       <form
         className="flex flex-col gap-form-field"
         onSubmit={(e) => {
+          console.log("onSubmit");
           e.preventDefault();
           setSubmitting(true);
+          console.log("submitting");
           const formData = new FormData(e.target as HTMLFormElement);
           formData.set("flow", flow);
-          void signIn("password", formData).catch((error) => {
-            let toastTitle = "";
-            if (error.message.includes("Invalid password")) {
-              toastTitle = "Invalid password. Please try again.";
-            } else {
-              toastTitle =
-                flow === "signIn"
-                  ? "Could not sign in, did you mean to sign up?"
-                  : "Could not sign up, did you mean to sign in?";
-            }
-            toast.error(toastTitle);
-            setSubmitting(false);
-          });
+          console.log("formData", formData);
+          void signIn("password", formData)
+            .catch((error) => {
+              console.log("error", error);
+              let toastTitle = "";
+              if (error.message.includes("Invalid password")) {
+                toastTitle = "Invalid password. Please try again.";
+              } else {
+                toastTitle =
+                  flow === "signIn"
+                    ? "Could not sign in, did you mean to sign up?"
+                    : "Could not sign up, did you mean to sign in?";
+              }
+              toast.error(toastTitle);
+              setSubmitting(false);
+            })
+            .finally(() => {
+              console.log("finally");
+              setSubmitting(false);
+            });
         }}
       >
         <input
