@@ -8,7 +8,7 @@ import { DonutTracker } from "./DonutTracker";
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-pink-50 to-orange-50">
-      <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm h-16 flex justify-between items-center border-b shadow-sm px-4">
+      <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm h-16 flex justify-between items-center border-b border-gray-200 shadow-sm px-4">
         <div className="flex items-center gap-2">
           <span className="text-2xl">🍩</span>
           <h2 className="text-xl font-semibold text-pink-600">
