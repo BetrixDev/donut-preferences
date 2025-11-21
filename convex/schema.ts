@@ -8,11 +8,11 @@ const applicationTables = {
     name: v.string(),
     favoriteDonut: v.optional(v.string()),
   }).index("by_user", ["userId"]),
-  
+
   donuts: defineTable({
     name: v.string(),
     description: v.string(),
-    imageUrl: v.string(),
+    imageStorageId: v.optional(v.id("_storage")),
   }),
 };
 
